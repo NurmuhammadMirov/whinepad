@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import Excel from './components/Excel';
 
 function App() {
+  let headers = localStorage.getItem('headers');
+  let data = localStorage.getItem('data');
+
+  if (!headers) {
+    headers = ['Title', 'Year', 'Rating', 'Comments'];
+    data = [['Red whine', '2021', '3', 'meh']];
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Excel
+        headers={headers}
+        initialData={data}
+      />
     </div>
   );
 }
