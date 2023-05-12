@@ -66,7 +66,7 @@ function Excel({headers, initialData}) {
         // document.getElementsByTagName('table')[0].width = '1024px'
         function keydownHandler(e) {
             if (e.altKey && e.shiftKey && e.keyCode === 82) {
-                // ALT+SHIFT+R(eplay)
+                // ALT+SHIFT+R(eplay);
                 replay();
             }
         }
@@ -78,10 +78,6 @@ function Excel({headers, initialData}) {
             auxLog = [];
         }
     }, []);
-
-    // React.useEffect(() => {
-    //     console.log(Date.now());
-    // }, /* no dependencie here */);
 
     function sort(e) {
         const column = e.target.cellIndex;
