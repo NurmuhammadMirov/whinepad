@@ -1,0 +1,5 @@
+.Body {
+    background-image: url('./../images/back.jpg');
+    background-size: cover;
+    padding: 40px;
+}
