@@ -1,12 +1,16 @@
+import { useRef } from "react";
 import Excel from "./Excel";
 import Logo from "./Logo";
 import Body from "./Body";
 import Button from './Button';
 import Suggest from './Suggest';
 import Rating from './Rating';
+import FormInput from "./FormInput";
+import Form from "./Form";
 import './Discovery.css';
 
 function Discovery() {
+    const form = useRef();
     return (
         <div className="Discovery">
             <h2>Logo</h2>
@@ -48,6 +52,67 @@ function Discovery() {
             <p>
                 Read-only: <Rating readonly={true} defaultValue={3} />
             </p>
+
+            <h2>Form inputs</h2>
+            <table className="Discovery-pad">
+                <tbody>
+                    <tr>
+                        <td>Vanilla input</td>
+                        <td><FormInput /></td>
+                    </tr>
+                    <tr>
+                        <td>Prefilled</td>
+                        <td><FormInput defaultValue="with a default" /></td>
+                    </tr>
+                    <tr>
+                        <td>Year</td>
+                        <td><FormInput type="year" /></td>
+                    </tr>
+                    <tr>
+                        <td>Rating</td>
+                        <td><FormInput type="rating" defaultValue={4} /></td>
+                    </tr>
+                    <tr>
+                        <td>Suggest</td>
+                        <td>
+                            <FormInput
+                                type="suggest"
+                                options={['red', 'green', 'blue']}
+                                defaultValue="green"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Vanilla textarea</td>
+                        <td><FormInput type="textarea" /></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Form</h2>
+            <div className="Discovery-pad Discovery-narrow">
+                <Form 
+                    ref={form}
+                    fields={{ 
+                        rateme: {label: 'Rating', type: 'rating'},
+                        freetext: {label: 'Greetings'},
+                    }}
+                    initialData={{rateme: 4, freetext: 'Hello'}}
+                />
+                <p>
+                    <Button
+                        onClick={() => {
+                            const data = {};
+                            Array.from(form.current).forEach(
+                                (input) => (data[input.id] = input.value)
+                            );
+                            alert(JSON.stringify(data));
+                        }}
+                    >
+                        Submit
+                    </Button>
+                </p>
+            </div>
         </div>
     )
 }
