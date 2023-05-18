@@ -7,6 +7,7 @@ import Suggest from './Suggest';
 import Rating from './Rating';
 import FormInput from "./FormInput";
 import Form from "./Form";
+import Actions from "./Actions";
 import './Discovery.css';
 
 function Discovery() {
@@ -112,6 +113,11 @@ function Discovery() {
                         Submit
                     </Button>
                 </p>
+            </div>
+
+            <h2>Actions</h2>
+            <div>
+                <Actions onAction={(type) => alert(type)} />
             </div>
         </div>
     )
