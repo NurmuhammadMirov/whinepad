@@ -8,6 +8,7 @@ import Rating from './Rating';
 import FormInput from "./FormInput";
 import Form from "./Form";
 import Actions from "./Actions";
+import DialogExample from "./DialogExample";
 import './Discovery.css';
 
 function Discovery() {
@@ -119,6 +120,11 @@ function Discovery() {
             <div>
                 <Actions onAction={(type) => alert(type)} />
             </div>
+
+            <h2>Dialog</h2>
+            <p>
+                <DialogExample />
+            </p>
         </div>
     )
 }
