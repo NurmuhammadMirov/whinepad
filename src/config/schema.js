@@ -22,7 +22,7 @@ const schema = {
         align: 'left',
     },
     rating: {
-        lable: 'Rating',
+        label: 'Rating',
         type: 'rating',
         show: true,
         samples: [3, 1, 5],

@@ -9,6 +9,7 @@ import FormInput from "./FormInput";
 import Form from "./Form";
 import Actions from "./Actions";
 import DialogExample from "./DialogExample";
+import schema from '../config/schema';
 import './Discovery.css';
 
 function Discovery() {
@@ -122,9 +123,21 @@ function Discovery() {
             </div>
 
             <h2>Dialog</h2>
-            <p>
-                <DialogExample />
-            </p>
+            <DialogExample />
+            <h2>Excel</h2>
+            <Excel
+                schema={schema}
+                initialData={schema.name.samples.map((_, idx) => {
+                    const element = {};
+                    for (let key in schema) {
+                        element[key] = schema[key].samples[idx];
+                    }
+                    return element;
+                })}
+                onDataChange={(data) => {
+                    console.log(data);
+                }}
+            />
         </div>
     )
 }
